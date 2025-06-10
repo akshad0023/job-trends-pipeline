@@ -16,6 +16,8 @@ narwhals==1.41.0
 numpy==2.2.6
 packaging==24.2
 pandas==2.2.3
+matplotlib
+seaborn
 pillow==11.2.1
 protobuf==6.31.1
 pyarrow==20.0.0
