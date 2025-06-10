@@ -14,8 +14,10 @@ This project analyzes job listing data to uncover insights about skills, salarie
 ## Features Implemented So Far
 
 - Data cleaning with `transform.py`
-- Basic exploratory data analysis with `explore.py`
-- First visualization: Salary distribution histogram
+- Skill extraction (Python, SQL, Excel)
+- Seniority level detection from job titles
+- Remote job parsing and flagging
+- Interactive dashboard with Streamlit for exploration and visualization
 
 ## How to Run
 
@@ -34,10 +36,12 @@ This project analyzes job listing data to uncover insights about skills, salarie
     ```bash
     python scripts/transform.py
     ```
-6. Run the exploration and visualization:
+6. Run the interactive dashboard:
     ```bash
-    python explore.py
+    streamlit run app.py
     ```
+
+**Note:** The file `explore.py` has been renamed to `app.py` to support the Streamlit dashboard.
 
 ## Sample Visualizations
 
@@ -62,4 +66,4 @@ Feel free to contribute or raise issues for improvements!
 
 ---
 
-Thank you!!!
+Thank you!!
