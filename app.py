@@ -3,10 +3,52 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-# Load cleaned data
-df = pd.read_csv('data/cleaned_jobs.csv')
-
 st.set_page_config(layout="wide")
+
+# Function to load and clean data
+@st.cache_data(ttl=3600)
+def load_and_clean_data():
+    import re
+    import numpy as np
+    url = "https://drive.google.com/uc?export=download&id=1DijQab20Be2MVsHUE7ZBFFCM-VJKSWib"
+    df = pd.read_csv(url)
+
+    df['has_python'] = df['job_description'].str.contains(r'\bpython\b', case=False, na=False)
+    df['has_sql'] = df['job_description'].str.contains(r'\bsql\b', case=False, na=False)
+    df['has_excel'] = df['job_description'].str.contains(r'\bexcel\b', case=False, na=False)
+    df['has_aws'] = df['job_description'].str.contains(r'\baws\b', case=False, na=False)
+
+    df['is_remote'] = df['job_description'].str.contains('remote', case=False, na=False) | df['location'].str.contains('remote', case=False, na=False)
+
+    def extract_seniority(title):
+        title = str(title).lower()
+        if 'senior' in title or 'sr' in title:
+            return 'Senior'
+        elif 'junior' in title or 'jr' in title:
+            return 'Junior'
+        elif 'mid' in title:
+            return 'Mid'
+        else:
+            return 'Other'
+
+    df['seniority'] = df['job_title'].apply(extract_seniority)
+
+    def parse_min_salary(salary_str):
+        if pd.isna(salary_str):
+            return np.nan
+        salary_str = str(salary_str).lower().replace('$', '').replace(',', '')
+        nums = re.findall(r'\d+', salary_str)
+        if nums:
+            return int(nums[0])
+        return np.nan
+
+    df['min_salary'] = df['salary'].apply(parse_min_salary)
+    return df
+
+
+# Load and clean data
+df = load_and_clean_data()
+
 st.title("📊 Tech Job Trends Interactive Dashboard")
 
 # Sidebar filter

@@ -1,7 +1,8 @@
 import pandas as pd
 
-# Load raw data
-df = pd.read_csv('data/rawjobs.csv')
+# Load raw data from google drive
+url = "https://drive.google.com/uc?export=download&id=1DijQab20Be2MVsHUE7ZBFFCM-VJKSWib"
+df = pd.read_csv(url)
 
 # Extract skill columns based on job_description
 df['has_python'] = df['job_description'].str.contains('python', case=False, na=False)
