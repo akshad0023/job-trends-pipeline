@@ -11,6 +11,11 @@ This project analyzes job listing data to uncover insights about skills, salarie
 - Bucket salaries into meaningful ranges
 - Generate visualizations for salary distribution and skill demand
 
+## 🚀 Live Demo
+
+Try the deployed app here:  
+👉 [View my Dashboard on Streamlit](https://akshad0023-job-trends-pipeline-app-qpywdb.streamlit.app/)
+
 ## Features Implemented So Far
 
 - Data cleaning with `transform.py`
@@ -23,23 +28,18 @@ This project analyzes job listing data to uncover insights about skills, salarie
 
 1. Clone the repository  
 2. Create and activate a virtual environment:
-    ```bash
-    python3 -m venv env
-    source env/bin/activate
-    ```
+    
+    "python3 -m venv env
+    source env/bin/activate"
+
 3. Install dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
-4. Add your raw job listings CSV as `data/rawjobs.csv`  
-5. Run the cleaning script:
-    ```bash
-    python scripts/transform.py
-    ```
-6. Run the interactive dashboard:
-    ```bash
-    streamlit run app.py
-    ```
+  
+    "pip install -r requirements.txt" 
+  
+4. Run the interactive dashboard (data is loaded directly from Google Drive):
+    
+    "streamlit run app.py"
+   
 
 **Note:** The file `explore.py` has been renamed to `app.py` to support the Streamlit dashboard.
 
@@ -66,4 +66,4 @@ Feel free to contribute or raise issues for improvements!
 
 ---
 
-Thank you!!
+Thank you!
